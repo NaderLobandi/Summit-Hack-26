@@ -1,22 +1,19 @@
 # Summit-Hack-26
 Summit hack 26 for sustanability
 
-[Phone camera / web upload]
-        ↓
-[Frontend: React or React Native]
-        ↓
-   [ClaudeAPI or Cursor]
-        ↓
-   ┌────┴────┐
-   ↓         ↓
+[Phone camera / web upload] ->
+        
+[Frontend: React or React Native] ->
+        
+   [ClaudeAPI or Cursor] ->
 [Vision     [LLM reasoning
  model]      layer]
-   ↓         ↑
-[Classification → structured prompt → recommendation]
-        ↓
-[Knowledge base: recycling rules, materials DB, dropoff locations]
-        ↓
-[JSON response → rendered UI card]
+   ->       
+[Classification → structured prompt → recommendation] ->
+        
+[Knowledge base: recycling rules, materials DB, dropoff locations] ->
+        
+[JSON response → rendered UI card] 
 
 What the app actually does
 User points phone camera at an item → app returns:
