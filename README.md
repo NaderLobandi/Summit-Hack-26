@@ -1,6 +1,10 @@
 # Summit-Hack-26
 Summit hack 26 for sustanability
 
+# Requirements
+powershell: pip install -r requirements.txt
+
+# Workflow
 [Phone camera / web upload] ->
         
 [Frontend: React or React Native] ->
