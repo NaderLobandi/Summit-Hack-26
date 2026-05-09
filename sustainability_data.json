@@ -1,0 +1,144 @@
+{
+  "gpu": {
+    "embodied_co2_kg": 164,
+    "embodied_co2_source": "nvidia_h100_pcf_2024",
+    "recoverable_metals_g": {"copper": 200, "gold": 0.08, "silver": 0.4, "aluminum": 600},
+    "materials_source": "pcb_recovery_avg_2024",
+    "scrap_value_usd": 25,
+    "refurb_value_modern_usd": 8000,
+    "refurb_value_legacy_usd": 200,
+    "refurb_source": "alta_technologies_2025",
+    "hazard_flags": ["do_not_landfill", "thermal_compound"],
+    "default_action": "refurbish_resell"
+  },
+
+  "cpu": {
+    "embodied_co2_kg": 80,
+    "embodied_co2_source": "scarif_2024_estimate",
+    "recoverable_metals_g": {"copper": 8, "gold": 0.2, "silver": 0.1},
+    "materials_source": "pcb_recovery_avg_2024",
+    "scrap_value_usd": 12,
+    "refurb_value_modern_usd": 2000,
+    "refurb_value_legacy_usd": 50,
+    "refurb_source": "pcsp_2026",
+    "hazard_flags": ["do_not_landfill"],
+    "default_action": "refurbish_resell"
+  },
+
+  "psu": {
+    "embodied_co2_kg": 25,
+    "embodied_co2_source": "dell_pcf_avg_estimate",
+    "recoverable_metals_g": {"copper": 350, "aluminum": 200, "steel": 600, "gold": 0.015},
+    "materials_source": "scrapcatalogue_psu_2025",
+    "scrap_value_usd": 4,
+    "refurb_value_modern_usd": 200,
+    "refurb_value_legacy_usd": 30,
+    "refurb_source": "alta_technologies_2025",
+    "hazard_flags": ["do_not_landfill", "high_voltage_capacitors"],
+    "default_action": "refurbish_resell"
+  },
+
+  "ram": {
+    "embodied_co2_kg": 25,
+    "embodied_co2_source": "dell_r740_lca_2019",
+    "recoverable_metals_g": {"copper": 5, "gold": 0.05, "silver": 0.08},
+    "materials_source": "pcb_recovery_avg_2024",
+    "scrap_value_usd": 3,
+    "refurb_value_modern_usd": 250,
+    "refurb_value_legacy_usd": 15,
+    "refurb_source": "pcsp_2026",
+    "hazard_flags": ["do_not_landfill"],
+    "default_action": "refurbish_resell"
+  },
+
+  "motherboard": {
+    "embodied_co2_kg": 110,
+    "embodied_co2_source": "dell_r740_lca_2019",
+    "recoverable_metals_g": {"copper": 500, "gold": 0.25, "silver": 0.6, "palladium": 0.1, "aluminum": 100},
+    "materials_source": "pcb_recovery_avg_2024",
+    "scrap_value_usd": 35,
+    "refurb_value_modern_usd": 800,
+    "refurb_value_legacy_usd": 80,
+    "refurb_source": "pcsp_2026",
+    "hazard_flags": ["do_not_landfill", "lithium_battery", "leaded_solder_pre_2006"],
+    "default_action": "refurbish_resell"
+  },
+
+  "ssd": {
+    "embodied_co2_kg": 160,
+    "embodied_co2_source": "seagate_decarbonizing_data_2025",
+    "recoverable_metals_g": {"copper": 8, "gold": 0.03, "silver": 0.05, "aluminum": 30},
+    "materials_source": "pcb_recovery_avg_2024",
+    "scrap_value_usd": 2.5,
+    "refurb_value_modern_usd": 1200,
+    "refurb_value_legacy_usd": 25,
+    "refurb_source": "pcsp_2026",
+    "hazard_flags": ["do_not_landfill", "data_security"],
+    "default_action": "secure_wipe_then_refurbish"
+  },
+
+  "hdd": {
+    "embodied_co2_kg": 30,
+    "embodied_co2_source": "seagate_decarbonizing_data_2025",
+    "recoverable_metals_g": {"aluminum": 350, "steel": 200, "copper": 30, "neodymium": 15, "platinum": 0.02},
+    "materials_source": "usgs_rare_earths_hdd_2024",
+    "scrap_value_usd": 8,
+    "refurb_value_modern_usd": 300,
+    "refurb_value_legacy_usd": 20,
+    "refurb_source": "pcsp_2026",
+    "hazard_flags": ["do_not_landfill", "data_security", "rare_earth_magnets"],
+    "default_action": "secure_destroy_then_recycle"
+  },
+
+  "network_card": {
+    "embodied_co2_kg": 20,
+    "embodied_co2_source": "scarif_2024_estimate",
+    "recoverable_metals_g": {"copper": 25, "gold": 0.04, "silver": 0.06, "aluminum": 30},
+    "materials_source": "pcb_recovery_avg_2024",
+    "scrap_value_usd": 3,
+    "refurb_value_modern_usd": 800,
+    "refurb_value_legacy_usd": 25,
+    "refurb_source": "alta_technologies_2025",
+    "hazard_flags": ["do_not_landfill"],
+    "default_action": "refurbish_resell"
+  },
+
+  "server_chassis": {
+    "embodied_co2_kg": 250,
+    "embodied_co2_source": "dell_r360_pcf_2023",
+    "recoverable_metals_g": {"steel": 12000, "aluminum": 2500, "copper": 600, "gold": 0.1},
+    "materials_source": "ewaste_monitor_2024_steel_recovery",
+    "scrap_value_usd": 20,
+    "refurb_value_modern_usd": 800,
+    "refurb_value_legacy_usd": 100,
+    "refurb_source": "pcsp_2026",
+    "hazard_flags": ["do_not_landfill"],
+    "default_action": "refurbish_resell"
+  },
+
+  "power_network_cable": {
+    "embodied_co2_kg": 1.5,
+    "embodied_co2_source": "estimated_copper_lca",
+    "recoverable_metals_g": {"copper": 80, "steel": 10},
+    "materials_source": "scrapmonster_cable_2024",
+    "scrap_value_usd": 0.6,
+    "refurb_value_modern_usd": 8,
+    "refurb_value_legacy_usd": 1,
+    "refurb_source": "general_market_2025",
+    "hazard_flags": [],
+    "default_action": "reuse_first"
+  },
+
+  "undetected": {
+    "embodied_co2_kg": null,
+    "embodied_co2_source": null,
+    "recoverable_metals_g": {},
+    "materials_source": null,
+    "scrap_value_usd": null,
+    "refurb_value_modern_usd": null,
+    "refurb_value_legacy_usd": null,
+    "refurb_source": null,
+    "hazard_flags": ["unknown_composition", "do_not_landfill_assumed"],
+    "default_action": "manual_review"
+  }
+}
