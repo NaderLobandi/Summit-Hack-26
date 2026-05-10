@@ -5,6 +5,12 @@ import datetime
 from pathlib import Path
 import streamlit as st
 import streamlit.components.v1 as components
+from perception import followup_answer, perceive  # noqa: E402
+from sustainability import get_sustainability_record  # noqa: E402
+from decision import recommend_action  # noqa: E402
+from cache import save_submission, submission_count  # noqa: E402
+from analytics_panel import render_analytics_panel  # noqa: E402
+
 
 # Repo root (parent of Spotware/) so `perception` and `sustainability` resolve
 _ROOT = Path(__file__).resolve().parent.parent
@@ -449,7 +455,7 @@ with st.sidebar:
 # ── Hero (sticky, shrinks on scroll) ─────────────────────────────────────────
 
 
-analysis_count = _get_count()
+analysis_count = submission_count()
 st.markdown(f"""
 <div class="spotware-hero">
     <span class="spotware-title">SpotWare</span>
@@ -644,11 +650,19 @@ if image_bytes:
                 st.session_state.last_sustainability = sustainability
                 st.session_state.last_decision = decision
                 progress_placeholder.empty()
-                _increment_count()
+                _ts  = datetime.datetime.now().strftime("%Y-%m-%d %H:%M")
+                _b64 = base64.b64encode(image_bytes).decode()
+                save_submission(
+                    perception=perception,
+                    decision=decision,
+                    image_b64=_b64,
+                    timestamp=_ts,
+                    sustainability=sustainability,
+                )
                 st.session_state.device_history.append({
                     "perception": perception,
                     "decision":   decision,
-                    "image_b64":  base64.b64encode(image_bytes).decode(),
+                    "image_b64":  _b64,
                     "timestamp":  datetime.datetime.now().strftime("%b %d, %H:%M"),
                 })
                 if len(st.session_state.device_history) > 5:
@@ -830,3 +844,6 @@ if image_bytes:
                 )
                 st.rerun()
             st.markdown("</div>", unsafe_allow_html=True)
+
+st.markdown("---")
+render_analytics_panel()
