@@ -36,6 +36,10 @@ Summit-Hack-26/
   Spotware/
     app.py
     logo1.png
+    demo.jpg
+    analytics_panel.py
+    cache.py
+    spotware_cache.db
   perception.py
   sustainability.py
   sustainability_data.json
