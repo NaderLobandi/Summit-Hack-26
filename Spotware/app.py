@@ -5,12 +5,6 @@ import datetime
 from pathlib import Path
 import streamlit as st
 import streamlit.components.v1 as components
-from perception import followup_answer, perceive  # noqa: E402
-from sustainability import get_sustainability_record  # noqa: E402
-from decision import recommend_action  # noqa: E402
-from cache import save_submission, submission_count  # noqa: E402
-from analytics_panel import render_analytics_panel  # noqa: E402
-
 
 # Repo root (parent of Spotware/) so `perception` and `sustainability` resolve
 _ROOT = Path(__file__).resolve().parent.parent
@@ -20,6 +14,8 @@ if str(_ROOT) not in sys.path:
 from perception import followup_answer, perceive  # noqa: E402
 from sustainability import get_sustainability_record  # noqa: E402
 from decision import recommend_action  # noqa: E402
+from cache import save_submission, submission_count  # noqa: E402
+from analytics_panel import render_analytics_panel  # noqa: E402
 
 # ── MUST be first Streamlit call ──────────────────────────────────────────────
 st.set_page_config(
