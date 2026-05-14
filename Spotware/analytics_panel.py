@@ -113,6 +113,14 @@ def render_analytics_panel():
         margin=dict(l=10, r=10, t=36, b=10),
     )
 
+    # Plotly toolbar config — hide the floating zoom/pan controls that overlap
+    # the chart on hover. For a demo, the toolbar adds clutter without value.
+    plotly_config = {
+        "displayModeBar": False,
+        "displaylogo": False,
+        "staticPlot": False,  # still allow hover tooltips
+    }
+
     col_left, col_right = st.columns(2)
 
     # 1. Donut — action breakdown
@@ -133,17 +141,33 @@ def render_analytics_panel():
                 values=action_counts["count"],
                 hole=0.55,
                 marker_colors=colors,
-                textinfo="label+percent",
-                textfont_size=11,
+                # Show percentages on slices (always fits); full action names
+                # go in the legend so long labels like "Recycle (metals recovery)"
+                # don't overflow the donut.
+                textinfo="percent",
+                textposition="inside",
+                insidetextorientation="horizontal",
+                textfont_size=12,
+                textfont_color="white",
+                hovertemplate="<b>%{label}</b><br>%{value} submissions (%{percent})<extra></extra>",
             )
         )
         fig_donut.update_layout(
             title=dict(text="Recommended actions", font_size=13, x=0.5),
-            showlegend=False,
+            showlegend=True,
+            legend=dict(
+                orientation="v",
+                yanchor="middle",
+                y=0.5,
+                xanchor="left",
+                x=1.0,
+                font=dict(size=11, color="#c9d1d9"),
+                bgcolor="rgba(0,0,0,0)",
+            ),
             height=280,
             **chart_cfg,
         )
-        st.plotly_chart(fig_donut, use_container_width=True)
+        st.plotly_chart(fig_donut, use_container_width=True, config=plotly_config)
 
     # 2. Bar — device class frequency
     with col_right:
@@ -160,9 +184,16 @@ def render_analytics_panel():
             title=dict(text="Device classes", font_size=13, x=0.5),
             height=280,
             yaxis=dict(categoryorder="total ascending"),
+            xaxis=dict(
+                # Submission count is whole-numbered — no fractional ticks.
+                tick0=0,
+                dtick=1,
+                tickformat="d",
+                rangemode="tozero",
+            ),
             **chart_cfg,
         )
-        st.plotly_chart(fig_bar, use_container_width=True)
+        st.plotly_chart(fig_bar, use_container_width=True, config=plotly_config)
 
     # 3. Cumulative CO₂ area line (only if ≥2 dated entries)
     dated = df.dropna(subset=["date"]).copy()
@@ -186,7 +217,7 @@ def render_analytics_panel():
             height=220,
             **chart_cfg,
         )
-        st.plotly_chart(fig_line, use_container_width=True)
+        st.plotly_chart(fig_line, use_container_width=True, config=plotly_config)
 
     # 4. Scatter — confidence vs recovery value
     fig_scatter = px.scatter(
@@ -213,7 +244,7 @@ def render_analytics_panel():
         legend=dict(bgcolor="rgba(0,0,0,0)", font_color="#8b949e"),
         **chart_cfg,
     )
-    st.plotly_chart(fig_scatter, use_container_width=True)
+    st.plotly_chart(fig_scatter, use_container_width=True, config=plotly_config)
 
     # ── Full submission log ───────────────────────────────────────────────────
     with st.expander("📋  Full submission log"):

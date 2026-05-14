@@ -600,13 +600,11 @@ else:
 st.markdown("</div></div>", unsafe_allow_html=True)  # close sw-card
 
 if image_bytes:
-    st.markdown("<div class='panel'>", unsafe_allow_html=True)
     col_run, col_clear = st.columns([3, 1])
     with col_run:
         run = st.button("🔍  Run analysis", type="primary", use_container_width=True)
     with col_clear:
         clear = st.button("🗑️  Clear results", use_container_width=True)
-    st.markdown("</div>", unsafe_allow_html=True)
 
     if clear:
         st.session_state.last_error = None
